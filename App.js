@@ -2,13 +2,28 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import Login from './components/login';
+import Signup from './components/signup';
+import Dashboard from './components/dashboard';
+
+
+import { NavigationContainer,createAppContainer,createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+
+
+const AppSwitchNavigator = createSwitchNavigator({
+  Signup:Signup,
+  Login:Login,
+  Dashboard:Dashboard
+});
+
+const AppNavigator = createAppContainer(AppSwitchNavigator);
+ name="Signup" 
+
+export default class App extends React.Component {
+  render (){
+    return <AppNavigator/>;
+  }
 }
 
 const styles = StyleSheet.create({
